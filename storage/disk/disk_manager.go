@@ -38,7 +38,7 @@ func (d *DiskManager) WritePage(id common.PageID, data []byte) error {
 	if err := d.file.Sync(); err != nil {
 		return fmt.Errorf("write page: %d: %w", id, err)
 	}
-	d.numWrites.And(1)
+	d.numWrites.Add(1)
 	return nil
 }
 
